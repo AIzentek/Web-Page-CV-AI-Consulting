@@ -39,10 +39,10 @@
                 <h2>AI Strategy & Implementation Consultant</h2>
                 <p>Expert in AI Consulting, Digital Transformation, and LLM Implementation with proven track record of delivering €19.5M+ in business opportunities</p>
                 <div class="hero-buttons">
-                    <a href="mailto:sergiomartinezramirez11@gmail.com?subject=Interested%20in%20Your%20AI%20Consulting%20Services" class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="openContactForm('interested')">
                         <i class="fas fa-envelope"></i>
                         Interested in My Skills?
-                    </a>
+                    </button>
                     <a href="#experience" class="btn btn-secondary">
                         <i class="fas fa-user"></i>
                         View Experience
@@ -116,10 +116,10 @@
                     <li>Created AI-powered voice training agent that delivers realistic sales simulations with automated rubrics and scoring</li>
                 </ul>
                 <div class="cta-section">
-                    <a href="mailto:sergiomartinezramirez11@gmail.com?subject=AI%20Consulting%20Services%20Inquiry" class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="openContactForm('strategy')">
                         <i class="fas fa-rocket"></i>
                         Let's Discuss Your AI Strategy
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -263,10 +263,10 @@
             </div>
             <div class="cta-section">
                 <p>Ready to leverage these skills for your business?</p>
-                <a href="mailto:sergiomartinezramirez11@gmail.com?subject=Partnership%20Opportunity" class="btn btn-primary btn-large">
+                <button class="btn btn-primary btn-large" onclick="openContactForm('partnership')">
                     <i class="fas fa-handshake"></i>
                     Let's Work Together
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -298,10 +298,10 @@
                 <div class="contact-cta">
                     <h3>Interested in My Expertise?</h3>
                     <p>Click below to start our conversation about your AI transformation journey.</p>
-                    <a href="mailto:sergiomartinezramirez11@gmail.com?subject=Let's%20Discuss%20AI%20Opportunities&body=Hi%20Sergio,%0A%0AI'm%20interested%20in%20discussing%20AI%20consulting%20opportunities.%0A%0ABest%20regards," class="btn btn-primary btn-large pulse">
+                    <button class="btn btn-primary btn-large pulse" onclick="openContactForm('conversation')">
                         <i class="fas fa-rocket"></i>
                         Start the Conversation
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -323,6 +323,101 @@
             </div>
         </div>
     </footer>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Get In Touch</h2>
+                <span class="close" onclick="closeContactForm()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="modalSubtitle">I'd love to hear from you! Please fill out the form below and I'll get back to you within 24 hours.</p>
+                
+                <form id="contactForm" action="https://formspree.io/f/xldedpqk" method="POST">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-field">
+                                <label for="position">Position</label>
+                                <input type="text" id="position" name="position">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inquiry">Type of Inquiry</label>
+                        <select id="inquiry" name="inquiry" required>
+                            <option value="">Please select...</option>
+                            <option value="ai-consulting">AI Consulting Services</option>
+                            <option value="strategy-implementation">AI Strategy & Implementation</option>
+                            <option value="training">AI Training Programs</option>
+                            <option value="digital-transformation">Digital Transformation</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Please tell me about your project, goals, and how I can help you..."></textarea>
+                    </div>
+
+                    <!-- Hidden field for form context -->
+                    <input type="hidden" id="formContext" name="formContext" value="">
+                    
+                    <!-- Formspree specific fields -->
+                    <input type="hidden" name="_replyto" value="">
+                    <input type="hidden" name="_subject" value="New AI Consulting Inquiry from Website">
+                    <input type="hidden" name="_next" value="https://aizentek.github.io/Web-Page-CV-AI-Consulting?success=true">
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeContactForm()">Cancel</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for your interest! I'll review your message and get back to you within 24 hours.</p>
+                    <button class="btn btn-primary" onclick="closeContactForm()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
